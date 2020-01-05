@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FireBaseTest</string>
+    <string name="detected_items">Detected Items</string>
+    <string name="desc_text">Scan credit card number and expiry date</string>
+    <string name="desc_face">Face Detection Trial</string>
+<!--    <string name="desc_barcode">A simple QR code scanner</string>-->
+    <string name="desc_labelling">Image Labeling Using FireBase</string>
+    <string name="desc_landmark">Find the landmark name and location</string>
+    <string name="title_text">Card Scanner</string>
+    <string name="title_custom">Custom Model</string>
+<!--    <string name="title_barcode">Barcode scanning</string>-->
+    <string name="title_labelling">Image labeling</string>
+    <string name="title_landmark">Landmark recognition</string>
+    <string name="location">Location</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="title_face">Face Detection</string>
+</resources>
