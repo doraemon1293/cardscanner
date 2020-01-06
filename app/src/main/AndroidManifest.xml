@@ -50,6 +50,12 @@
 
         </activity>
 
+        <activity
+            android:name="com.example.cardscanner.CardsListActivity"
+            android:parentActivityName="com.example.cardscanner.HomeActivity">
+
+        </activity>
+
 
     </application>
 </manifest>

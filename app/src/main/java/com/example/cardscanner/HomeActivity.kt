@@ -17,9 +17,11 @@ class HomeActivity : AppCompatActivity() {
         with(apiList) {
             add(EntryModel(R.drawable.image_labelling, getString(R.string.title_labelling), getString(R.string.desc_labelling), 0))
             add(EntryModel(R.drawable.text_recognition, getString(R.string.title_text), getString(R.string.desc_text), 1))
-//            add(PojoApi(R.drawable.barcode_scanning, getString(R.string.title_barcode), getString(R.string.desc_barcode), 2))
+//            add(EntryModel(R.drawable.barcode_scanning, getString(R.string.title_barcode), getString(R.string.desc_barcode), 2))
             add(EntryModel(R.drawable.landmark_identification, getString(R.string.title_landmark), getString(R.string.desc_landmark), 3))
             add(EntryModel(R.drawable.face_detection, getString(R.string.title_face), getString(R.string.desc_face), 4))
+            add(EntryModel(R.drawable.cards_list, getString(R.string.title_cards_list), getString(R.string.desc_cards_list), 2))
+
         }
 
         rvHome.layoutManager = LinearLayoutManager(this)

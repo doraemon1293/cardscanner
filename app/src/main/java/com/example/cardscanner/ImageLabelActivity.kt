@@ -2,13 +2,13 @@ package com.example.cardscanner
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
-import com.example.cardscanner.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_image_label.*
 
@@ -43,16 +43,18 @@ class ImageLabelActivity : BaseCameraActivity() {
 //                }
 //    }
 
-    private fun getLabelsFromClod(bitmap: Bitmap) {
+    private fun getLabelsFromCloud(bitmap: Bitmap) {
         val image = FirebaseVisionImage.fromBitmap(bitmap)
-        val detector = FirebaseVision.getInstance()
-                .visionCloudLabelDetector
+        val detector = FirebaseVision.getInstance().cloudImageLabeler
         itemsList.clear()
-        detector.detectInImage(image)
-                .addOnSuccessListener {
+        detector.processImage(image)
+                .addOnSuccessListener {labels->
                     fabProgressCircle.hide()
-                    itemsList.addAll(it)
-                    itemAdapter = ImageLabelAdapter(itemsList, true)
+                    for (label in labels) {
+                        Log.i("Image:abel", "${label.text} ${label.confidence}")
+                    }
+                    itemsList.addAll(labels)
+                    itemAdapter = ImageLabelAdapter(itemsList)
                     rvLabel.adapter = itemAdapter
                     sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
                 }
@@ -67,7 +69,7 @@ class ImageLabelActivity : BaseCameraActivity() {
         fabProgressCircle.show()
         cameraView.captureImage { cameraKitImage ->
             // Get the Bitmap from the captured shot
-            getLabelsFromClod(cameraKitImage.bitmap)
+            getLabelsFromCloud(cameraKitImage.bitmap)
             runOnUiThread {
                 showPreview()
                 imagePreview.setImageBitmap(cameraKitImage.bitmap)

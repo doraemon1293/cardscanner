@@ -16,4 +16,7 @@
     <string name="longitude">Longitude</string>
     <string name="accuracy">Accuracy</string>
     <string name="title_face">Face Detection</string>
+    <string name="title_cards_list">Scanned Cards</string>
+    <string name="desc_cards_list">Show details of all scanned cards</string>
+
 </resources>

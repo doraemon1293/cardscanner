@@ -27,6 +27,8 @@ class HomeAdapter(private val apiList: List<EntryModel>) : RecyclerView.Adapter<
 //                    2 -> context.startActivity(Intent(context, BarCodeReaderActivity::class.java))
                     3 -> context.startActivity(Intent(context, LandmarkDetectorActivity::class.java))
                     4 -> context.startActivity(Intent(context, FaceDetectionActivity::class.java))
+                    2 -> context.startActivity(Intent(context, CardsListActivity::class.java))
+
                 }
             }
         }

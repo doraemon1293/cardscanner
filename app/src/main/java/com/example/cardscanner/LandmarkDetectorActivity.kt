@@ -11,7 +11,6 @@ import androidx.core.app.ActivityCompat
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.cardscanner.BaseCameraActivity
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import kotlinx.android.synthetic.main.activity_main.*
@@ -79,22 +78,30 @@ class LandmarkDetectorActivity : BaseCameraActivity() {
 
     private fun getLandmarkFromCloud(bitmap: Bitmap) {
         val image = FirebaseVisionImage.fromBitmap(bitmap)
-        val detector = FirebaseVision.getInstance()
-                .visionCloudLandmarkDetector
+//        val options = FirebaseVisionCloudDetectorOptions.Builder()
+//                .setMaxResults(10)
+//                .build()
+        val detector = FirebaseVision.getInstance().visionCloudLandmarkDetector
 
         detector.detectInImage(image)
-                .addOnCompleteListener {
+                .addOnSuccessListener  {firebaseVisionCloudLandmarks ->
+                    var confidence=0f
                     Log.e("TAG", "completed")
-                    for (firebaseVisionLandmarks in it.result) {
-                        val landmark = firebaseVisionLandmarks.landmark
-                        tvLocationName.text = landmark
-                        for (location in firebaseVisionLandmarks.locations) {
-                            val lat = location.latitude
-                            val long = location.longitude
-                            tvLatitude.text = lat.toString()
-                            tvLongitude.text = long.toString()
+                    for (landmark  in firebaseVisionCloudLandmarks) {
+                        Log.i("landmark","${landmark.landmark} ${landmark.confidence}")
+
+                        if (landmark.confidence>confidence){
+                            val landmarkName = landmark.landmark
+                            confidence = landmark.confidence
+                            tvLocationName.text = landmarkName
+                            for (location in landmark.locations) {
+                                val lat = location.latitude
+                                val long = location.longitude
+                                tvLatitude.text = lat.toString()
+                                tvLongitude.text = long.toString()
+                            }
+                            tvAccuracy.text = (landmark.confidence * 100).toInt().toString()
                         }
-                        tvAccuracy.text = (firebaseVisionLandmarks.confidence * 100).toInt().toString()
                     }
                 }
                 .addOnFailureListener {

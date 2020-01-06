@@ -9,10 +9,7 @@ import android.widget.Toast
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.face.FirebaseVisionFace
-import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions
-import com.example.cardscanner.R
-import com.example.cardscanner.R.id.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_image_label.*
 
@@ -32,9 +29,9 @@ class FaceDetectionActivity : BaseCameraActivity() {
 
     private fun getFaceDetails(bitmap: Bitmap) {
         val options: FirebaseVisionFaceDetectorOptions = FirebaseVisionFaceDetectorOptions.Builder()
-                .setLandmarkType(FirebaseVisionFaceDetectorOptions.ALL_LANDMARKS)
-                .setClassificationType(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
-                .setModeType(FirebaseVisionFaceDetectorOptions.FAST_MODE)
+                .setLandmarkMode(FirebaseVisionFaceDetectorOptions.ALL_LANDMARKS)
+                .setClassificationMode(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
+                .setPerformanceMode (FirebaseVisionFaceDetectorOptions.FAST)
                 .build()
         val image: FirebaseVisionImage = FirebaseVisionImage.fromBitmap(bitmap)
         val faceDetector = FirebaseVision.getInstance().getVisionFaceDetector(options)
