@@ -1,5 +1,6 @@
 package com.example.cardscanner
 
+
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -15,8 +16,10 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
+
 class CardScannerActivity : BaseCameraActivity() {
     val Tag="CardScannerActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupBottomSheet(R.layout.layout_card_scanner)
@@ -72,22 +75,28 @@ class CardScannerActivity : BaseCameraActivity() {
 
                         }
                     }
+
+                    if (cardNumber!="Unknown"&&expireDate!="Unknown") {
+                        val card: MutableMap<String, String?> = HashMap()
+                        card["cardNumber"] = cardNumber
+                        card["expireDate"] = expireDate
+                        val token = SharedUtil.getIntance(this).readShared("token", "")
+                        card["token"] = token
+                        card["notified"]="F"
+                        val current = LocalDateTime.now()
+                        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+                        val formatted = current.format(formatter)
+                        card["Added"] = formatted
+                        // Add a new document with a generated ID
+                        val db = FirebaseFirestore.getInstance()
+                        db.collection("cards")
+                                .add(card)
+                                .addOnSuccessListener { documentReference -> Log.d("card_list_activity", "DocumentSnapshot added with ID: " + documentReference.id) }
+                                .addOnFailureListener { e -> Log.w("card_list_activity", "Error adding document", e) }
+                    }
+
                     tvCardNumber.text=cardNumber
                     tvCardExpiry.text=expireDate
-
-                    val card: MutableMap<String, Any> = HashMap()
-                    card["cardNumber"] = cardNumber
-                    card["expireDate"] = expireDate
-                    val current = LocalDateTime.now()
-                    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-                    val formatted = current.format(formatter)
-                    card["Added"]=formatted
-                    // Add a new document with a generated ID
-                    val db = FirebaseFirestore.getInstance()
-                    db.collection("cards")
-                            .add(card)
-                            .addOnSuccessListener { documentReference -> Log.d("card_list_activity", "DocumentSnapshot added with ID: " + documentReference.id) }
-                            .addOnFailureListener { e -> Log.w("card_list_activity", "Error adding document", e) }
                     sheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                 }
                 .addOnFailureListener {

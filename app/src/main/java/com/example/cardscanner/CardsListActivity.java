@@ -45,13 +45,17 @@ public class CardsListActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                String s;
-                                s="Card NO: "+document.getData().get("cardNumber").toString()+" Exp: "+document.getData().get("expireDate").toString()+"\nadded: "+document.get("Added").toString();
+                                String token = SharedUtil.getIntance(CardsListActivity.this).readShared("token", "");
+                                Log.d(Tag, token);
+
+                                if (token.equals(document.getData().get("token"))) {
+                                    String s;
+                                    s = "Card NO: " + document.getData().get("cardNumber").toString() + " Exp: " + document.getData().get("expireDate").toString() + "\nadded: " + document.get("Added").toString();
 //                                Log.d("query", document.getId() + " => " + document.getData());
 //                                Log.d("query",document.getData().get("Added").toString());
-                                Log.d(Tag, s);
-                                cards.add(s);
-
+                                    Log.d(Tag, s);
+                                    cards.add(s);
+                                }
                             }
                         } else {
                             Log.d(Tag, "Error getting documents.", task.getException());
