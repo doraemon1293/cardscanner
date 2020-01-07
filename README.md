@@ -21,4 +21,3 @@ Please watch the video in demo_video folder for demostration.
 ## Install
 Please download and run cardscanner.apk to install.
 
-Please note that the notification sefrvice only works while server-side is activated.
