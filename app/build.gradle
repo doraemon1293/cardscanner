@@ -15,11 +15,39 @@ android {
         aaptOptions {
             noCompress "tflite"
         }
+
+
     }
+    signingConfigs {
+        debugConfig {
+            storeFile file("cardscanner.jks")
+            storePassword "111111"
+            keyAlias "cardscanner"
+            keyPassword "111111"
+        }
+        testConfig {
+            storeFile file("cardscanner.jks")
+            storePassword "111111"
+            keyAlias "cardscanner"
+            keyPassword "111111"
+        }
+        releaseConfig {
+            storeFile file("cardscanner.jks")
+            storePassword "111111"
+            keyAlias "cardscanner"
+            keyPassword "111111"
+        }
+    }
+
     buildTypes {
+        debug{
+            signingConfig signingConfigs.debugConfig
+
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
         }
     }
 }

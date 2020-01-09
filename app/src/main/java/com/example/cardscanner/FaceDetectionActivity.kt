@@ -20,7 +20,6 @@ class FaceDetectionActivity : BaseCameraActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        cameraView.facing = CameraKit.Constants.FACING_FRONT
         setupBottomSheet(R.layout.layout_image_label)
         rvLabel.layoutManager = LinearLayoutManager(this)
 

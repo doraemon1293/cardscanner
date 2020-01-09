@@ -48,8 +48,7 @@ class LandmarkDetectorActivity : BaseCameraActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 12345) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            //The library requires write access to the External Storage,
-            //so ensure that the permission is granted
+            //ensure that the write permission
                 fab_take_photo.setOnClickListener(this)
         }
     }

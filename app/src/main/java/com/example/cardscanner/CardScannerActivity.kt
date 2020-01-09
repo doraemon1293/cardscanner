@@ -70,7 +70,8 @@ class CardScannerActivity : BaseCameraActivity() {
 
                             }
                         }
-                        else if (wordArray.size==16){
+                        //changed the card number length due to TESTER from outside UK
+                        else if (wordArray.size>12){
                             cardNumber=wordArray.joinToString("")
 
                         }
