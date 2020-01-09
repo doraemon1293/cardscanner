@@ -10,7 +10,7 @@
 1. Face detection
 2. Image labeling
 3. Landmark recognisation
-4. credit card recognisation and push notification when it is going to be rexpired.
+4. credit card recognisation and push notification when it is going to be rexpired in X days. ( For testing, X=2000 )
 ---
 
 ## Demo
