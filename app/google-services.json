@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "437977661480",
+    "firebase_url": "https://cardscanner-929e1.firebaseio.com",
+    "project_id": "cardscanner-929e1",
+    "storage_bucket": "cardscanner-929e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437977661480:android:bfc79a3d057e651471b51d",
+        "android_client_info": {
+          "package_name": "com.example.cardscanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437977661480-8m0qtuo9hungasrh5pi2l6aphcotruvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjH6QjNVOQ3ARldxrrG8qslp9cHiTJsn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437977661480-8m0qtuo9hungasrh5pi2l6aphcotruvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437977661480:android:c44d3f094a642be071b51d",
+        "android_client_info": {
+          "package_name": "com.example.fbtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437977661480-8m0qtuo9hungasrh5pi2l6aphcotruvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjH6QjNVOQ3ARldxrrG8qslp9cHiTJsn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437977661480-8m0qtuo9hungasrh5pi2l6aphcotruvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437977661480:android:0f2c3cb66b2e557971b51d",
+        "android_client_info": {
+          "package_name": "io.github.the_dagger.mlkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437977661480-8m0qtuo9hungasrh5pi2l6aphcotruvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjH6QjNVOQ3ARldxrrG8qslp9cHiTJsn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437977661480-8m0qtuo9hungasrh5pi2l6aphcotruvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
